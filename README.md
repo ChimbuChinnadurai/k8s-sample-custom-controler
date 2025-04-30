@@ -3,7 +3,7 @@
 # Command to generate cert for webhooks
 
 ```
-openssl req -x509 -sha256 -newkey rsa:2048 -keyout webhook.key -out webhook.crt -days 1024 -nodes -addext "subjectAltName = DNS.1:validate.validate.svc"
+openssl req -x509 -sha256 -newkey rsa:2048 -keyout tls.key -out tls.crt -days 1024 -nodes -addext "subjectAltName = DNS.1:validate.validate.svc"
 ```
 
 base64 encode the key and cert file and save as a kubernetes secret for the application. Base64 encode the cert file and add that in webhook caBundle
