@@ -16,12 +16,13 @@ spec:
   - name: https
     protocol: TCP
     port: 443
-    targetPort: 5000
+    targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: validation-webhook
+  namespace: validate
   labels:
     app: validate
 spec:
@@ -38,7 +39,7 @@ spec:
       - name: webhook
         image: simbu1290/k8s:validating-webhook-v1
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
         env:
         - name: environment
           value: development
